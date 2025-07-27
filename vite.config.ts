@@ -4,9 +4,19 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [vue()],
+  base: '/brilliant_reflection/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
+    }
+  },
+  build: {
+    rollupOptions: {
+      onwarn(warning, warn) {
+        // Suppress certain warnings for deployment
+        if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return
+        warn(warning)
+      }
     }
   },
   test: {

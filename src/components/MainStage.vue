@@ -18,7 +18,7 @@ import paper from 'paper'
 import { useStageStore } from '@/store'
 import { RayRenderer, RayAnimationRenderer } from '@/rendering'
 import { ComponentFactory, type BaseComponent } from '@/components/stage'
-import { computeRaySegments, computeMirrorImage, computeMirrorImages } from '@/physics'
+import { computeRaySegments, computeMirrorImages } from '@/physics'
 import { getAllGeometry } from '@/physics/geometry'
 
 const store = useStageStore()
@@ -252,10 +252,8 @@ function startGame() {
   const phantomId = `computed_phantom_${Date.now()}`
   const phantomSpec = {
     id: phantomId,
-    type: 'phantom',
-    position: mirrorImage.position,
-    rotation: mirrorImage.rotation,
-    scale: mirrorImage.scale || 1
+    type: 'phantom' as const,
+    position: mirrorImage.position
   }
   store.stageSpec.components.push(phantomSpec)
   store.setCorrectPhantom(phantomId)
@@ -298,10 +296,8 @@ async function animateReverseRay() {
     const imageId = `computed_mirror_${Date.now()}_${index}`
     const imageSpec = {
       id: imageId,
-      type: 'mirror_image',
-      position: mirror.position,
-      rotation: mirror.rotation,
-      scale: mirror.scale || 1
+      type: 'mirror_image' as const,
+      position: mirror.position
     }
     store.stageSpec.components.push(imageSpec)
   })

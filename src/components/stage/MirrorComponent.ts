@@ -5,7 +5,6 @@ import { directionFromAngle, add, scale } from '@/utils/math'
 
 export class MirrorComponent extends BaseComponent {
   private mirrorPath: paper.Path | null = null
-  private shinePath: paper.Path | null = null
 
   render(): void {
     // Clean up existing items
@@ -40,48 +39,18 @@ export class MirrorComponent extends BaseComponent {
     this.mirrorPath = new paper.Path()
     this.mirrorPath.moveTo(start)
     this.mirrorPath.lineTo(end)
-    this.mirrorPath.strokeColor = new paper.Color('silver')
-    this.mirrorPath.strokeWidth = 9
+    this.mirrorPath.strokeColor = new paper.Color('lightblue')
+    this.mirrorPath.strokeWidth = 5
     this.mirrorPath.strokeCap = 'round'
 
-    // Add mirror shine effect
-    const shineLength = length * 0.8
-    const shineHalf = shineLength / 2
-    const shineStart = position.subtract(new paper.Point(direction.x * shineHalf, direction.y * shineHalf))
-    const shineEnd = position.add(new paper.Point(direction.x * shineHalf, direction.y * shineHalf))
-    
-    this.shinePath = new paper.Path()
-    this.shinePath.moveTo(shineStart)
-    this.shinePath.lineTo(shineEnd)
-    this.shinePath.strokeColor = new paper.Color('white')
-    this.shinePath.strokeWidth = 2
-    this.shinePath.opacity = 0.7
-
-    const mirrorGroup = new paper.Group([this.mirrorPath, this.shinePath])
+    const mirrorGroup = new paper.Group([this.mirrorPath])
     return mirrorGroup
-  }
-
-  private onRotate(angleDelta: number): void {
-    const mirrorSpec = this.spec as MirrorSpec
-    const newOrientation = mirrorSpec.orientation + angleDelta
-    
-    // Update local spec directly
-    mirrorSpec.orientation = newOrientation
-    
-    // Update Paper.js object directly by re-rendering the shape
-    if (this.paperItem && this.mirrorPath && this.shinePath) {
-      // Remove old shapes and create new ones with updated orientation
-      this.mirrorPath.remove()
-      this.shinePath.remove()
-      const newShape = this.renderShape()
-      this.paperItem.addChild(newShape)
-    }
   }
 
   protected resetVisualState(): void {
     if (this.mirrorPath) {
       this.mirrorPath.strokeColor = new paper.Color('silver')
-      this.mirrorPath.strokeWidth = 9
+      this.mirrorPath.strokeWidth = 5
     }
   }
 

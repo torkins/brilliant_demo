@@ -186,8 +186,14 @@ function renderAllComponents() {
   store.stageSpec.components.forEach(spec => {
     // Handle phantom visibility based on mode
     if (spec.type === 'phantom') {
-      if (store.currentMode !== 'game' && store.currentMode !== 'edit' && store.currentMode !== 'sandbox') {
+      if (store.currentMode !== 'game' && store.currentMode !== 'edit') {
         return // Hide phantoms in modes other than game, edit, and sandbox
+      }
+    }
+
+    if (spec.type === 'mirror_image') {
+      if (store.currentMode == 'game') {
+        return // Hide mirror images in game mode 
       }
     }
     

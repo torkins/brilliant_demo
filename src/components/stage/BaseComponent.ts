@@ -91,16 +91,6 @@ export abstract class BaseComponent {
   // Visual state management
   protected updateVisualState(): void {
     if (!this.paperItem) return
-    
-    if (this.isSelected) {
-      this.paperItem.strokeColor = new paper.Color('blue')
-      this.paperItem.strokeWidth = 3
-    } else if (this.isHovered) {
-      this.paperItem.strokeColor = new paper.Color('lightblue')
-      this.paperItem.strokeWidth = 2
-    } else {
-      this.resetVisualState()
-    }
   }
 
   protected abstract resetVisualState(): void

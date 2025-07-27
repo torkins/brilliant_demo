@@ -38,33 +38,17 @@ export class WallComponent extends BaseComponent {
     this.wallPath = new paper.Path()
     this.wallPath.moveTo(start)
     this.wallPath.lineTo(end)
-    this.wallPath.strokeColor = new paper.Color('brown')
-    this.wallPath.strokeWidth = 12
+    this.wallPath.strokeColor = new paper.Color('gray')
+    this.wallPath.strokeWidth = 5
     this.wallPath.strokeCap = 'round'
 
     return this.wallPath
   }
 
-  private onRotate(angleDelta: number): void {
-    const wallSpec = this.spec as WallSpec
-    const newOrientation = wallSpec.orientation + angleDelta
-    
-    // Update local spec directly
-    wallSpec.orientation = newOrientation
-    
-    // Update Paper.js object directly by re-rendering the shape
-    if (this.paperItem && this.wallPath) {
-      // Remove old shape and create new one with updated orientation
-      this.wallPath.remove()
-      const newShape = this.renderShape()
-      this.paperItem.addChild(newShape)
-    }
-  }
-
   protected resetVisualState(): void {
     if (this.wallPath) {
-      this.wallPath.strokeColor = new paper.Color('brown')
-      this.wallPath.strokeWidth = 12
+      this.wallPath.strokeColor = new paper.Color('gray')
+      this.wallPath.strokeWidth = 5
     }
   }
 

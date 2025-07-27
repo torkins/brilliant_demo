@@ -1,0 +1,8 @@
+export { BaseComponent } from './BaseComponent'
+export { ViewerComponent } from './ViewerComponent'
+export { WallComponent } from './WallComponent'
+export { MirrorComponent } from './MirrorComponent'
+export { BunnyComponent } from './BunnyComponent'
+export { PhantomBunnyComponent } from './PhantomBunnyComponent'
+export { MirrorImageComponent } from './MirrorImageComponent'
+export { ComponentFactory } from './ComponentFactory'

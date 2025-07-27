@@ -1,0 +1,48 @@
+{
+  "name": "brilliant_reflection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:browser": "vitest --browser",
+    "test:browser:run": "vitest run --browser",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint . --ext .vue,.js,.ts",
+    "lint:fix": "eslint . --ext .vue,.js,.ts --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@vitejs/plugin-vue": "^6.0.0",
+    "paper": "^0.12.18",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.4.1",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.6",
+    "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@types/jsdom": "^21.1.7",
+    "@types/paper": "^0.11.14",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "@vitest/browser": "^3.2.4",
+    "@vue/test-utils": "^2.4.6",
+    "eslint": "^9.32.0",
+    "eslint-plugin-vue": "^10.3.0",
+    "happy-dom": "^18.0.1",
+    "jsdom": "^26.1.0",
+    "playwright": "^1.54.1",
+    "typescript-eslint": "^8.38.0",
+    "vitest": "^3.2.4",
+    "vue-tsc": "^3.0.4"
+  }
+}
